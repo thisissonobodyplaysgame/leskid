@@ -120,8 +120,11 @@ export function warmProxy() {
 
 function realUrl(href) {
 	const url = new URL(href, location.href);
-	if (url.pathname.startsWith(__uv$config.prefix)) {
-		return __uv$config.decodeUrl(url.pathname.slice(__uv$config.prefix.length)) + url.search + url.hash;
+	// The UV config arrives with the proxy engines. A direct same-site link never loads
+	// them, so guard it: reading the prefix off nothing used to throw and abort the load.
+	const uv = globalThis.__uv$config;
+	if (uv && url.pathname.startsWith(uv.prefix)) {
+		return uv.decodeUrl(url.pathname.slice(uv.prefix.length)) + url.search + url.hash;
 	}
 	try {
 		return scramjet.decodeUrl(url.href);
