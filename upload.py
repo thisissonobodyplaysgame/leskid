@@ -6,7 +6,7 @@ Puts Flux Mini on GitHub and turns on GitHub Pages, so it gets a free https link
     python upload.py --dry-run       build and show the size, change nothing online
 
 Run it again after any change to push the update. Needs git, and the GitHub CLI signed in
-(`gh auth login`). The site then opens at https://<you>.github.io/<repo>/extra.svg?f3
+(`gh auth login`). The site then opens at https://<you>.github.io/<repo>/
 """
 
 import subprocess
@@ -70,7 +70,7 @@ def main():
     # Fails harmlessly if Pages is already on.
     run("gh", "api", "repos/%s/pages" % full, "-X", "POST", "-f", "source[branch]=main", "-f", "source[path]=/", check=False)
     owner, name = full.split("/")
-    print("Done. In a minute or two: https://%s.github.io/%s/extra.svg?f3" % (owner.lower(), name))
+    print("Done. In a minute or two: https://%s.github.io/%s/" % (owner.lower(), name))
 
 
 if __name__ == "__main__":

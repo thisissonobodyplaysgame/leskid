@@ -1,10 +1,11 @@
 # Flux Mini
 
-A small copy of Flux: games, a web proxy and wallpapers, all from one SVG page.
+A small copy of Flux: games, a web proxy and wallpapers.
 
-- `extra.svg?f3` opens the site.
+- The root link (`https://<you>.github.io/<repo>/`) opens the site as a normal page.
+- `extra.svg?f3` opens the same site inside one SVG page.
 - `extra.svg` on its own just shows a picture.
-- `index.html` is a calculator.
+- `calculator.html` is a calculator.
 
 ## Put it online
 
@@ -23,10 +24,10 @@ It makes a public repo called `flux-mini`, turns on GitHub Pages and prints your
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000/extra.svg?f3`.
+Then open `http://localhost:8000/`.
 
 ## Change things
 
-- **The page:** edit `src/page.html`, then run `python build_svg.py`.
+- **The page:** edit `src/page.html`, then run `python build_svg.py` (it writes `index.html` and `extra.svg`).
 - **Games:** add a folder to `edutools/` and a line to `edulist.txt`, with its cover in `visuals/`.
 - **The picture:** replace `src/decoy.svg`.

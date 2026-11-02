@@ -1,4 +1,4 @@
-"""Builds extra.svg: the whole of src/page.html inside one SVG foreignObject, with no separate page."""
+"""Builds the site from src/page.html: index.html (the page itself) and extra.svg (the whole page inside one SVG foreignObject, with no separate page)."""
 import html.entities
 import re
 import xml.etree.ElementTree as ET
@@ -47,6 +47,8 @@ def build():
     )
     (ROOT / "extra.svg").write_text(svg, encoding="utf-8", newline="\n")
     ET.fromstring(svg.encode("utf-8"))  # a browser shows an error page for anything that isn't valid XML
+    # The same page as plain HTML, so /<repo>/ opens the site directly.
+    (ROOT / "index.html").write_text(page, encoding="utf-8", newline="\n")
     return svg
 
 
