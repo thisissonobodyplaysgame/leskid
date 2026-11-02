@@ -197,6 +197,18 @@ async function navigate(tab, input) {
 	const url = toUrl(input, settings.search);
 	Object.assign(tab, { url, title: new URL(url).hostname, loading: true });
 	if (tab === active) select(tab);
+	// Scramjet refuses to proxy this site's own origin (it throws "attempted to fetch
+	// from same origin" so a proxied page can't reach the real site). A link back to
+	// this site needs no proxy - it is already reachable - so open it directly instead
+	// of showing a Scramjet error page. Other sites, including every other github.io
+	// site, still go through the proxy.
+	if (new URL(url).origin === location.origin) {
+		debug(`Opening ${url} directly (same site as the proxy)`);
+		showStatus("");
+		$("engine-badge").textContent = "";
+		tab.el.src = url;
+		return;
+	}
 	debug(`Opening ${url} with Scramjet`);
 	showStatus("Starting proxy…");
 	try {
