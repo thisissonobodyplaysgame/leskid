@@ -3,7 +3,7 @@
 A small copy of Flux: games, a web proxy and wallpapers.
 
 - The root link (`https://<you>.github.io/<repo>/`) opens the browser directly, always through Scramjet.
-- `https://<you>.github.io/<repo>/?url=example.com` opens a site straight in the proxy.
+- `https://<you>.github.io/<repo>/?url=example.com` opens a site straight in the proxy, full window, with no browser bar.
 - `extra.svg?f3` opens the same site inside one SVG page.
 - `extra.svg` on its own just shows a picture.
 - `calculator.html` is a calculator.

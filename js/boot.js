@@ -18,6 +18,10 @@
 		}
 	}
 	const root = document.documentElement;
+	// A ?url=/?q=/# deep link opens the site full-window: no tabs, no address bar, just the page.
+	if (new URLSearchParams(location.search).get("url") || new URLSearchParams(location.search).get("q") || location.hash.length > 1) {
+		root.classList.add("direct-link");
+	}
 	root.classList.toggle("perf", !!s.perf);
 	root.classList.toggle("sb-collapsed", !!s.collapsed);
 	if (s.bg === "link" && s.bgLink) {

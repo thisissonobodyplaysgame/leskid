@@ -1589,3 +1589,32 @@ input[role="switch"]:checked::before {
 		padding: 6px 8px 0;
 	}
 }
+
+/* Direct links (?url=, ?q= or #site) open the page on its own, full window, just
+   like visiting the site normally: no tabs, no address bar, no border, no padding.
+   js/boot.js adds the class before the first paint so none of it ever flashes. */
+.direct-link body {
+	padding: 0;
+}
+.direct-link .shell {
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+}
+.direct-link .topbar,
+.direct-link .newtab {
+	display: none !important;
+}
+/* Loading and error messages still surface, as a small card over the page. */
+.direct-link .status {
+	position: fixed;
+	left: 12px;
+	bottom: 12px;
+	z-index: 50;
+	max-width: min(420px, calc(100vw - 24px));
+	padding: 8px 12px;
+	border: 1px solid var(--border);
+	border-radius: var(--r-sm);
+	background: var(--bg2);
+	box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.6);
+}
