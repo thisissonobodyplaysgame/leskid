@@ -197,7 +197,7 @@ async function navigate(tab, input) {
 	const url = toUrl(input, settings.search);
 	Object.assign(tab, { url, title: new URL(url).hostname, loading: true });
 	if (tab === active) select(tab);
-	debug(`Opening ${url} with ${settings.engine === "uv" ? "Ultraviolet" : "Scramjet"}`);
+	debug(`Opening ${url} with Scramjet`);
 	showStatus("Starting proxy…");
 	try {
 		await prepare();
@@ -209,12 +209,8 @@ async function navigate(tab, input) {
 		return;
 	}
 	showStatus("");
-	$("engine-badge").textContent = settings.engine === "uv" ? "Ultraviolet" : "Scramjet";
-	if (settings.engine === "uv") {
-		tab.el.src = __uv$config.prefix + __uv$config.encodeUrl(url);
-	} else {
-		(tab.sj ??= scramjet.createFrame(tab.el)).go(url);
-	}
+	$("engine-badge").textContent = "Scramjet";
+	(tab.sj ??= scramjet.createFrame(tab.el)).go(url);
 }
 
 // Opens a new tab, optionally loading a URL or search in it. A blank current tab is reused.

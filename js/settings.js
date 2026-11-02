@@ -16,7 +16,7 @@ export const DEFAULTS = Object.freeze({
 	cloakIcon: "",
 	panicKey: "`",
 	panicUrl: "https://classroom.google.com/",
-	toured: false, // the first-visit setup tour (js/ui.js) has been shown
+	toured: true, // the first-visit setup tour (js/ui.js) is not shown
 });
 
 // One shared, live object: modules read it and call saveSettings() after changing it.

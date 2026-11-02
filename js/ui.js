@@ -419,8 +419,12 @@ loadGames().then(
 // Find a working Wisp server in the background so the proxy is ready when needed.
 (window.requestIdleCallback || setTimeout)(showWisp);
 requestAnimationFrame(playIntro);
-if (!settings.toured) setTimeout(openTour, root.classList.contains("perf") ? 300 : 2000); // after the intro
-if (location.hash.length > 1) go(decodeURIComponent(location.hash.slice(1)));
+// Deep links: /?url=example.com, /?q=example.com or /#example.com opens that site in the browser.
+const deepLink =
+	new URLSearchParams(location.search).get("url") ||
+	new URLSearchParams(location.search).get("q") ||
+	(location.hash.length > 1 ? decodeURIComponent(location.hash.slice(1)) : "");
+if (deepLink.trim()) go(deepLink.trim());
 
 // Page-load intro. Everything is already in its final place; the F starts shifted to
 // the centre and slides back while "lux" (riding along, so it stays attached to the F)
