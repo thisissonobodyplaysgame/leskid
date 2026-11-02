@@ -406,6 +406,7 @@ applyPerf(root.classList.contains("perf"));
 showBackground(settings.bg, settings.bgLink);
 markChoices();
 moveIndicator();
+showView("browser"); // the site opens straight into the browser
 initGames(showView);
 loadGames().then(
 	(count) => ($("game-count").textContent = count),

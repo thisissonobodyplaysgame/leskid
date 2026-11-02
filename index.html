@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-page="home">
+<html lang="en" data-page="browser">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -83,7 +83,7 @@
 		<main class="main">
 			<button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu"><svg class="i"><use href="#i-menu" /></svg></button>
 
-			<section class="view home intro waiting" id="view-home">
+			<section class="view home intro waiting" id="view-home" hidden>
 				<div class="hero-wrap">
 					<h1 class="hero" aria-label="Flux v3">
 						<svg class="hero-logo" aria-hidden="true"><use href="#logo" /></svg>
@@ -131,7 +131,7 @@
 				<iframe class="frame" id="tv-frame" title="TV" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 			</section>
 
-			<section class="view browser" id="view-browser" hidden>
+			<section class="view browser" id="view-browser">
 				<div class="topbar">
 					<div class="tabstrip" id="tabs" role="tablist" aria-label="Browser tabs"></div>
 					<div class="bar" id="browser-bar">

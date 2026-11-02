@@ -244,7 +244,7 @@ m34 -295 c73 -35 124 -162 198 -494 55 -251 74 -374 87 -583 17 -267 3 -313
 		<main class="main">
 			<button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu"><svg xmlns="http://www.w3.org/2000/svg" class="i"><use href="#i-menu" /></svg></button>
 
-			<section class="view home intro waiting" id="view-home">
+			<section class="view home intro waiting" id="view-home" hidden="">
 				<div class="hero-wrap">
 					<h1 class="hero" aria-label="Flux v3">
 						<svg xmlns="http://www.w3.org/2000/svg" class="hero-logo" aria-hidden="true"><use href="#logo" /></svg>
@@ -292,7 +292,7 @@ m34 -295 c73 -35 124 -162 198 -494 55 -251 74 -374 87 -583 17 -267 3 -313
 				<iframe class="frame" id="tv-frame" title="TV" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen=""></iframe>
 			</section>
 
-			<section class="view browser" id="view-browser" hidden="">
+			<section class="view browser" id="view-browser">
 				<div class="topbar">
 					<div class="tabstrip" id="tabs" role="tablist" aria-label="Browser tabs"></div>
 					<div class="bar" id="browser-bar">

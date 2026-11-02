@@ -1577,3 +1577,15 @@ input[role="switch"]:checked::before {
 	font-size: 16px;
 	font-variant-numeric: tabular-nums;
 }
+
+/* Browser-only landing: the site opens straight into the browser, with no sidebar or menu. */
+.sidebar,
+.scrim,
+.menu-btn {
+	display: none !important;
+}
+@media (max-width: 760px) {
+	.browser .tabstrip {
+		padding: 6px 8px 0;
+	}
+}
