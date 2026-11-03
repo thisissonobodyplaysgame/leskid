@@ -27,6 +27,21 @@ const frames = $("frames");
 let scramjet, connection;
 let transportKey = "";
 
+// Sites embedded in another site (a player inside a watch page, a widget, a game frame)
+// talk to their host with postMessage. Scramjet wraps those messages for the proxy
+// realm, so when this page is itself the frame they stop here and the host never hears
+// "ready" - the host then thinks the player failed and moves on. Pass them one level up.
+addEventListener("message", (event) => {
+	if (window === window.top || event.source === window.parent) return;
+	const data = event.data;
+	if (!data || typeof data !== "object" || !("$scramjet$messagetype" in data)) return;
+	try {
+		window.parent.postMessage(data.$scramjet$data, "*");
+	} catch {
+		// The host is gone or the frame was replaced - nothing to forward to.
+	}
+});
+
 function showStatus(message, isError = false) {
 	status.textContent = message;
 	status.classList.toggle("error", isError);
